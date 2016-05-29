@@ -1,0 +1,9 @@
+$(document).ready(function(){
+	$('.mobile-nav-toogle').click(function(e){
+		e.stopPropagation();
+		$('.mobile-nav').toggleClass('is-open');
+	});
+	$(document).click(function(){
+		$('.mobile-nav').removeClass('is-open');
+	});
+});
