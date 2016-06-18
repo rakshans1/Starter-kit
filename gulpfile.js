@@ -1,10 +1,12 @@
-var gulp        = require('gulp');
-var browserSync = require('browser-sync');
-var sass        = require('gulp-sass');
-var prefix      = require('gulp-autoprefixer');
-var cp          = require('child_process');
-var cleanCSS    = require('gulp-clean-css');
-var uglify      = require('gulp-uglify');
+const gulp        = require('gulp');
+const browserSync = require('browser-sync');
+const sass        = require('gulp-sass');
+const prefix      = require('gulp-autoprefixer');
+const cp          = require('child_process');
+const cleanCSS    = require('gulp-clean-css');
+const uglify      = require('gulp-uglify');
+const htmlmin     = require('gulp-htmlmin');
+const imagemin    = require('gulp-imagemin');
 
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 var messages = {
@@ -59,7 +61,16 @@ gulp.task('js', function() {
     .pipe(uglify())
     .pipe(gulp.dest('assets/js/min/'));
 });
-
+gulp.task('html', function() {
+  return gulp.src('_site/**/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('_site'))
+});
+gulp.task('image', () =>
+    gulp.src('assets/img/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('assets/img/'))
+);
 /**
  * Watch scss files for changes & recompile
  * Watch html/md files, run jekyll & reload BrowserSync
