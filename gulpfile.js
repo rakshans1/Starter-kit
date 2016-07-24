@@ -7,6 +7,7 @@ const cleanCSS    = require('gulp-clean-css');
 const uglify      = require('gulp-uglify');
 const htmlmin     = require('gulp-htmlmin');
 const imagemin    = require('gulp-imagemin');
+const plumber = require('gulp-plumber');
 
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 var messages = {
@@ -45,6 +46,7 @@ gulp.task('browser-sync', ['sass', 'jekyll-build','js'], function() {
  */
 gulp.task('sass', function () {
     return gulp.src('assets/css/main.scss')
+        .pipe(plumber())
         .pipe(sass({
             includePaths: ['css'],
             onError: browserSync.notify
