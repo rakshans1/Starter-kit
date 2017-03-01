@@ -9,9 +9,10 @@ A starter project including full setup for Jekyll, GulpJS, SASS, AutoPrefixer &a
 
 To use this starter project, you'll need the following things installed on your machine.
 
-1. [Jekyll](http://jekyllrb.com/) - `$ gem install jekyll`
-2. [NodeJS](http://nodejs.org) - use the installer.
-3. [GulpJS](https://github.com/gulpjs/gulp) - `$ npm install -g gulp`
+1. [Ruby](https://www.ruby-lang.org/en/) - `$ sudo apt-get install ruby-dev`
+2. [Jekyll](http://jekyllrb.com/) - `$ gem install jekyll`
+3. [NodeJS](http://nodejs.org) - use the installer.
+4. [GulpJS](https://github.com/gulpjs/gulp) - `$ npm install -g gulp`
 
 ## Local Installation
 
