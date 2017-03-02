@@ -78,7 +78,7 @@ gulp.task('image', () =>
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch('assets/css/**', ['sass']);
+    gulp.watch('assets/css/**/*.scss', ['sass']);
     gulp.watch('assets/js/**', ['js','jekyll-rebuild']);
     gulp.watch(['*.html', '_layouts/*.html', '_includes/*.html'], ['jekyll-rebuild']);
 });
