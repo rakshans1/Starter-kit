@@ -7,7 +7,8 @@ const cleanCSS    = require('gulp-clean-css');
 const uglify      = require('gulp-uglify');
 const htmlmin     = require('gulp-htmlmin');
 const imagemin    = require('gulp-imagemin');
-const plumber = require('gulp-plumber');
+const plumber     = require('gulp-plumber');
+const hygienist   = require('hygienist-middleware');
 
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 var messages = {
@@ -36,7 +37,8 @@ gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
 gulp.task('browser-sync', ['sass', 'jekyll-build','js'], function() {
     browserSync({
         server: {
-            baseDir: '_site'
+            baseDir: '_site',
+            middleware: hygienist("_site")
         }
     });
 });
